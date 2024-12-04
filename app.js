@@ -1,11 +1,5 @@
-// Helper method
-Object.defineProperty(String.prototype, 'capitalize', {
-    value: function() {
-      return this.charAt(0).toUpperCase() + this.slice(1);
-    },
-    enumerable: false
-  });
-
+const logger = require('./utils/logger');
+require ('./utils/capitalize.js');
 
 // Start a express server
 
@@ -27,7 +21,9 @@ app.get("/hola/:name", (req, res) => {
 	// get the URL parameters passed by
 	// query with req.query
 	//const queries = req.query;
-	res.send('Hola, ' + req.params.name.capitalize());
+	var salida = 'Hola, ' + req.params.name.capitalize();
+	logger.info(salida);
+	res.send(salida);
 });
 
 // listen for connections
